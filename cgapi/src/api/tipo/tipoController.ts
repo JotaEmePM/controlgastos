@@ -1,18 +1,18 @@
-import type { Request, RequestHandler, Response } from 'express'
+import type { Request, RequestHandler, Response } from "express"
 
-import { TipoService } from '@/api/tipo/tipoService'
-import { handleServiceResponse } from '@/common/utils/httpHandlers'
-import { logger } from '@/server'
+import { TipoService } from "@/api/tipo/tipoService"
+import { handleServiceResponse } from "@/common/utils/httpHandlers"
+import { logger } from "@/server"
 
 class TipoController {
   private tipoService: TipoService
 
-  constructor () {
+  constructor() {
     this.tipoService = new TipoService()
   }
 
   public getTipos: RequestHandler = async (_req: Request, res: Response) => {
-    logger.info('Ingreso a getTipos')
+    logger.info("Ingreso a getTipos")
     const serviceResponse = await this.tipoService.findAll()
     return handleServiceResponse(serviceResponse, res)
   }

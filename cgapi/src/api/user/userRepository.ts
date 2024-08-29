@@ -1,4 +1,4 @@
-import type { User } from "@/api/user/userModel";
+import type { User } from "@/api/user/userModel"
 
 export const users: User[] = [
   {
@@ -17,14 +17,14 @@ export const users: User[] = [
     createdAt: new Date(),
     updatedAt: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days later
   },
-];
+]
 
 export class UserRepository {
   async findAllAsync(): Promise<User[]> {
-    return users;
+    return users
   }
 
   async findByIdAsync(id: number): Promise<User | null> {
-    return users.find((user) => user.id === id) || null;
+    return users.find((user) => user.id === id) || null
   }
 }

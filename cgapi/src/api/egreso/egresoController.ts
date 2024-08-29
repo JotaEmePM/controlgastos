@@ -1,13 +1,13 @@
-import type { Request, RequestHandler, Response } from 'express'
+import type { Request, RequestHandler, Response } from "express"
 
-import { EgresoService } from '@/api/egreso/egresoService'
-import { handleServiceResponse } from '@/common/utils/httpHandlers'
-import { logger } from '@/server'
+import { EgresoService } from "@/api/egreso/egresoService"
+import { handleServiceResponse } from "@/common/utils/httpHandlers"
+import { logger } from "@/server"
 
 class EgresoController {
   private egresoService: EgresoService
 
-  constructor () {
+  constructor() {
     this.egresoService = new EgresoService()
   }
 
