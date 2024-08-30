@@ -11,7 +11,7 @@ services:
     volumes:
       - mongo_data:/data/db
   api:
-    build: ./cgapi
+    build: .
     container_name: cgapi
     restart: always
     ports:
@@ -19,6 +19,12 @@ services:
     depends_on:
       - mongo
     environment:
-      MONGO_URL: mongodb://mongo:27017/controlgastos
+      - NODE_ENV=development # Options: 'development', 'production'
+      - PORT=8080 # The port your server will listen on
+      - HOST=localhost # Hostname for the server
+      - CORS_ORIGIN=http://localhost:* # Allowed CORS origin, adjust as necessary
+      - COMMON_RATE_LIMIT_WINDOW_MS=1000 # Window size for rate limiting (ms)
+      - COMMON_RATE_LIMIT_MAX_REQUESTS=20 # Max number of requests per window per IP
+      - MONGO_URL=mongodb://mongo:27017/controlgastos
 volumes:
   mongo_data:
