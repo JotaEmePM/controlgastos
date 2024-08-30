@@ -7,14 +7,11 @@ import { openAPIRouter } from '@/api-docs/openAPIRouter'
 import { healthCheckRouter } from '@/api/healthCheck/healthCheckRouter'
 
 import { userRouter } from '@/api/user/userRouter'
-import { tipoRouter } from './api/tipo/tipoRouter'
 
 import errorHandler from '@/common/middleware/errorHandler'
 import rateLimiter from '@/common/middleware/rateLimiter'
 import requestLogger from '@/common/middleware/requestLogger'
 import { env } from '@/common/utils/envConfig'
-import { ingresoRouter } from './api/ingreso/ingresoRouter'
-import { egresoRouter } from './api/egreso/egresoRouter'
 
 const logger = pino({ name: 'server start' })
 const app: Express = express()
@@ -35,9 +32,6 @@ app.use(requestLogger)
 // Routes
 app.use('/health-check', healthCheckRouter)
 app.use('/users', userRouter)
-app.use('/tipos', tipoRouter)
-app.use('/ingresos', ingresoRouter)
-app.use('/egresos', egresoRouter)
 
 // Swagger UI
 app.use(openAPIRouter)
